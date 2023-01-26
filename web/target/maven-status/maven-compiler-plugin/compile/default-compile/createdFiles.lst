@@ -1,0 +1,15 @@
+org\web\cofigMVC\AppContext.class
+org\web\controllers\topic\TopicController.class
+org\web\controllers\RegistrationController.class
+org\web\forms\UserForm.class
+org\web\controllers\post\PostController.class
+org\web\controllers\user\UserController.class
+org\web\authentication\MyDBAuthenticationService.class
+org\web\cofigMVC\SecurityWebApplicationInitializer.class
+org\web\forms\TopicForm.class
+org\web\cofigMVC\WebMvcConfig.class
+org\web\controllers\LoginController.class
+org\web\forms\PostForm.class
+org\web\cofigMVC\AppInitializer.class
+org\web\controllers\WelcomeController.class
+org\web\cofigMVC\SecurityConfiguration.class

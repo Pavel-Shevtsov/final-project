@@ -1,0 +1,17 @@
+D:\Task8\web\src\main\java\org\web\controllers\WelcomeController.java
+D:\Task8\web\src\main\java\org\web\controllers\LoginController.java
+D:\Task8\web\src\main\java\org\web\cofigMVC\SecurityConfiguration.java
+D:\Task8\web\src\main\java\org\web\cofigMVC\AppContext.java
+D:\Task8\web\src\main\java\org\web\forms\PostForm.java
+D:\Task8\web\src\main\java\org\web\controllers\user\UserController.java
+D:\Task8\web\src\main\java\org\web\cofigMVC\SecurityWebApplicationInitializer.java
+D:\Task8\web\src\main\java\org\web\controllers\topic\TopicController.java
+D:\Task8\web\src\main\java\org\web\service\EmailService.java
+D:\Task8\web\src\main\java\org\web\forms\TopicForm.java
+D:\Task8\web\src\main\java\org\web\cofigMVC\WebMvcConfig.java
+D:\Task8\web\src\main\java\org\web\controllers\post\PostController.java
+D:\Task8\web\src\main\java\org\web\controllers\RegistrationController.java
+D:\Task8\web\src\main\java\org\web\cofigMVC\AppInitializer.java
+D:\Task8\web\src\main\java\org\web\forms\UserForm.java
+D:\Task8\web\src\main\java\org\web\authentication\MyDBAuthenticationService.java
+D:\Task8\web\src\main\java\org\web\service\EmailServiceImpl.java

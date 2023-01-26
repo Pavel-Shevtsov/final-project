@@ -1,0 +1,9 @@
+org\example\model\User.class
+org\example\repository\UserJpaRepository.class
+org\example\config\TestAppContext.class
+org\example\model\Post.class
+org\example\model\Topic.class
+org\example\repository\PostJpaRepository.class
+org\example\repository\TopicJpaRepository.class
+org\example\repository\BaseRepository.class
+org\example\validation\UserValidation.class
