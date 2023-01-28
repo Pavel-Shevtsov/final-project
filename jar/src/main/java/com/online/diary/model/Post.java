@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @ToString
 @AllArgsConstructor
 @Entity
-@Table(name = "MomentsOfLife",uniqueConstraints = @UniqueConstraint(name = "user_momentOfLife",columnNames = {"id","momentsOfLife_id","user_id"}))
-public class MomentsOfLife implements Serializable {
+@Table(name = "Post",uniqueConstraints = @UniqueConstraint(name = "user_post",columnNames = {"id","user_id"}))
+public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

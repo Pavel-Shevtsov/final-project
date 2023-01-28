@@ -1,3 +1,1 @@
-org\exemple\repository\PostJpaRepositoryTest.class
-org\exemple\repository\TopicJpaRepositoryTest.class
-org\exemple\repository\UserJpaRepositoryTest.class
+com\online\diary\repository\UserTest.class

@@ -1,12 +1,13 @@
 package com.online.diary.forms;
 
-import com.online.diary.model.MomentsOfLife;
+import com.online.diary.model.Post;
 import com.online.diary.model.User;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @NoArgsConstructor
 @Getter
@@ -20,33 +21,35 @@ public class UserForm {
     private String password;
     private String confirmPassword;
     private String newPassword;
-    private String eMail;
+    private String email;
     private String newEmail;
     private String role;
     private LocalDate birthday;
-    private LocalDate newBirthDay;
+    private LocalDate newBirthday;
     private MultipartFile fileData;
     private byte[] image;
-    private List<MomentsOfLifeForm> momentsOfLives;
+    private List<PostForm> posts = new ArrayList<>();
 
     public UserForm(User user){
         this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
-        this.eMail = user.getEMail();
+        this.email = user.getEmail();
         this.role = user.getRole();
         this.birthday = user.getBirthday();
         this.image = user.getImage();
 
-        for (MomentsOfLife momentsOfLife : user.getMomentsOfLives()){
-            MomentsOfLifeForm momentsOfLifeForm = new MomentsOfLifeForm();
-            momentsOfLifeForm.setId(momentsOfLife.getId());
-            momentsOfLifeForm.setTag(momentsOfLife.getTag());
-            momentsOfLifeForm.setPublicationDate(momentsOfLife.getPublicationDate());
-            momentsOfLifeForm.setText(momentsOfLife.getText());
-            momentsOfLifeForm.setIsPrivate(momentsOfLife.getIsPrivate());
-            momentsOfLifeForm.setIsApprovedForPublication(momentsOfLife.getIsApprovedForPublication());
-            this.momentsOfLives.add(momentsOfLifeForm);
+        if (user.getPosts()!=null) {
+            for (Post post : user.getPosts()) {
+                PostForm postForm = new PostForm();
+                postForm.setId(post.getId());
+                postForm.setTag(post.getTag());
+                postForm.setPublicationDate(post.getPublicationDate());
+                postForm.setText(post.getText());
+                postForm.setIsPrivate(post.getIsPrivate());
+                postForm.setIsApprovedForPublication(post.getIsApprovedForPublication());
+                this.posts.add(postForm);
+            }
         }
 
 

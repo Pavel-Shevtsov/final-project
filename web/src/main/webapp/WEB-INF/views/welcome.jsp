@@ -10,11 +10,12 @@
     <title>Welcome</title>
     </head>
             <body>
-                                 <div class ="welcomeMessage">
-                                      <c:if test = "${visitCounter<1}">
-                                      <h1>Welcome ${user.username}</h1>
+
+                                      <c:if test = "${visitCounter<2}">
+                                      <h2>Welcome ${user.username}</h2>
                                       </c:if>
-                                 </div>
+
+
                 <table>
                     <security:authorize access = "hasRole('ROLE_Admin')">
                         <thead>
@@ -30,22 +31,26 @@
                    </security:authorize>
 
                                 <security:authorize access = "hasRole('ROLE_User')">
-                                      <form action="${pageContext.request.contextPath}/welcome" method = "get" >
+
                                           <thead>
-                                              <th >All topics</th>
-                                              <th >Action</th>
+                                              <th> Tag </th>
+                                              <th> Text </th>
+                                              <th> Action </th>
                                           </thead>
                                               <tbody>
                                                   <c:forEach var="userMomentOfLife" items="${userMomentOfLife}">
                                                       <tr>
-                                                          <td><c:out value ="${userMomentOfLife.tag}"/></td>
-                                                          <td><p><a class="action" href ="${pageContext.request.contextPath}/topic/delete?id=${userMomentOfLife.id}">Delete</a></p>
-                                                          <p><a class="action" href ="${pageContext.request.contextPath}/post/posts?id=${userMomentOfLife.id}">Go to</a></p></td>
+                                                          <td>#<c:out value =" ${userMomentOfLife.tag} "/></td>
+                                                          <td><c:out value =" ${userMomentOfLife.text} "/></td>
+                                                          <td><p><a class="action" href ="${pageContext.request.contextPath}/post/delete?id=${userMomentOfLife.id}">Delete </a>
+                                                          <a class="action" href ="${pageContext.request.contextPath}/post/posts?id=${userMomentOfLife.id}"> Go to </a></p></td>
                                                       </tr>
                                               </tbody>
                                                   </c:forEach>
-                                      </form>
+
                                 </security:authorize>
                 </table>
+                 <a class="action" href ="${pageContext.request.contextPath}/user/update?id=${user.id}"> Update </a></p>
+
             </body>
     </html>

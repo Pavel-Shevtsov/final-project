@@ -3,13 +3,12 @@ package com.online.diary.service.impl;
 import com.online.diary.repository.BaseRepository;
 import com.online.diary.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-@Service
+@NoRepositoryBean
 public class BaseServiceImpl <T,ID> implements IService<T,ID> {
 
     @Autowired

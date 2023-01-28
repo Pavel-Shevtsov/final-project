@@ -3,51 +3,30 @@
     <html>
     <head>
     <meta http-equiv = "Context-Type" context = "text/html charset = ISO-8859-1" >
-    <style><%@include file="/WEB-INF/style/styleBody.css"%></style>
-    <style><%@include file="/WEB-INF/style/styleUpdatePage.css"%></style>
+
     <title>Update </title>
     </head>
             <body>
-             <div class= "message">
-                ${userEmailAlreadyRegistered}
-                ${userNameAlreadyRegistered}
-                ${updatePassword}
-                ${updateUserPassword}
-             </div>
-                    <div class= "updatePage">
-                        <div class = "legendUpdatePage">
-                            <h1>Changing user data <h1>
-
-                        </div>
-                            <div class= "updateText">
-                            <form action="uploadPhoto" enctype="multipart/form-data" method="post">
-
-                                  <p>Choose your photo</p>
-                                  <td><img src="${pageContext.request.contextPath}/user/viewImage" width="100"</td>
-                                  <p><input type="file" name="fileData" >
-                                  <input type="submit" value="Download"></p>
-                            </form>
+                                    <h3>${errorMessage}<h3>
                                     <form action="${pageContext.request.contextPath}/user/update" method = "post" >
-                                        <div class="text-field">
-                                            <p>ID</p>
-                                            <input class="text-readonly"type = "text" name = "id" value ="${updateUserForm.id}"readonly>
-                                            <p>Old Name</p>
-                                            <input class="text-readonly" type = "text" name="username" value="${updateUserForm.username}" readonly>
-                                            <p>New Name</p>
-                                            <input type="text" name = "newUsername" >
-                                            <p>New Password</p>
-                                            <input type="password" name = "newPassword" >
-                                            <p> Old email </p>
-                                            <input class="text-readonly" type = "text" name="email" value="${updateUserForm.email}"readonly>
-                                            <p> New Email </p>
-                                            <input type="email" name = "newEmail" >
-                                        </div>
+                                            <td><input type = "hidden" name= "id" value="${userUpdateForm.id}"/></td>
+                                            <td><input type = "hidden" name= "username" value="${userUpdateForm.username}"/></td>
+                                            <td><input type = "hidden" name= "birthday" value="${userUpdateForm.birthday}"/></td>
+                                            <td><input type = "hidden" name= "email" value="${userUpdateForm.email}"/></td>
+                                            <td><input type = "hidden" name= "password" value="${userUpdateForm.password}"/></td>
+                                            <td><input type = "hidden" name= "role" value="${userUpdateForm.role}"/></td>
+
+                                            <p>New Name
+                                            <input type="text" name = "newUsername" placeholder="${userUpdateForm.username}" ></p>
+                                            <p>New Password
+                                            <input type="password" name = "newPassword" ></p>
+                                            <p> New Email
+                                            <input type="email" name = "newEmail" placeholder="${userUpdateForm.email}" ></p>
+                                            <p>New BirthDay
+                                            <input type="date" id="start" name="newBirthday"
+                                             min="1940-01-01" max="2010-31-12" placeholder="${userUpdateForm.birthday}" ></p>
                                         <input type = "submit", value = "Update">
                                     </form>
-
-
-                            </div>
                             <button onclick = "location.href = '${pageContext.request.contextPath}/welcome' ">Back </button>
-                    </div>
             </body>
     </html>

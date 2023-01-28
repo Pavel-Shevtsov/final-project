@@ -1,9 +1,9 @@
 package com.online.diary.fasads;
 
 import com.online.diary.exception.ValidationException;
-import com.online.diary.forms.MomentsOfLifeForm;
+import com.online.diary.forms.PostForm;
 import com.online.diary.forms.UserForm;
-import com.online.diary.model.MomentsOfLife;
+import com.online.diary.model.Post;
 import com.online.diary.model.User;
 import com.online.diary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +26,22 @@ public class UserFacade {
         user.setUsername(userForm.getUsername());
         user.setPassword(userForm.getPassword());
         user.setRole(userForm.getRole());
-        user.setEMail(userForm.getEMail());
+        user.setEmail(userForm.getEmail());
         user.setBirthday(userForm.getBirthday());
         user.setImage(userForm.getImage());
-        List<MomentsOfLife> moments = new ArrayList<>();
+        List<Post> posts = new ArrayList<>();
 
-        for (MomentsOfLifeForm momentsOfLifeForm : userForm.getMomentsOfLives()) {
-            MomentsOfLife momentsOfLife = new MomentsOfLife();
-            momentsOfLife.setId(momentsOfLifeForm.getId());
-            momentsOfLife.setTag(momentsOfLifeForm.getTag());
-            momentsOfLife.setText(momentsOfLifeForm.getText());
-            momentsOfLife.setPublicationDate(momentsOfLifeForm.getPublicationDate());
-            momentsOfLife.setIsApprovedForPublication(momentsOfLifeForm.getIsApprovedForPublication());
-            momentsOfLife.setIsPrivate(momentsOfLifeForm.getIsPrivate());
-            moments.add(momentsOfLife);
+        if (userForm.getPosts()!=null) {
+            for (PostForm postForm : userForm.getPosts()) {
+                Post post = new Post();
+                post.setId(postForm.getId());
+                post.setTag(postForm.getTag());
+                post.setText(postForm.getText());
+                post.setPublicationDate(postForm.getPublicationDate());
+                post.setIsApprovedForPublication(postForm.getIsApprovedForPublication());
+                post.setIsPrivate(postForm.getIsPrivate());
+                posts.add(post);
+            }
         }
         return user;
     }
@@ -60,7 +62,7 @@ public class UserFacade {
         return true;
     }
 
-    public UserForm getBuId(long id){
+    public UserForm getById(long id){
         return new UserForm(userService.getById(id));
     }
 
@@ -73,8 +75,8 @@ public class UserFacade {
 
         if (userService.getByUsername(userForm.getNewUsername())==null){
             if (userService.getByEmail(userForm.getNewEmail())==null){
+                userForm.setRole("User");
                 User user = buildUser(userForm);
-                user.setRole("User");
                 userService.add(user);
             }else{
                 throw new ValidationException("A user with this email is already registered");
@@ -89,28 +91,29 @@ public class UserFacade {
     }
 
     public void update(UserForm userForm) throws ValidationException {
-        if (userForm.getNewUsername()!=null){
+        if (userForm.getNewUsername()!=null&&!userForm.getNewUsername().equals("")){
             if (userService.getByUsername(userForm.getNewUsername())==null){
-                userForm.setUsername(userForm.getUsername());
+                userForm.setUsername(userForm.getNewUsername());
             }else{
                 throw new ValidationException("A user with this name is already registered");
             }
         }
-        if (userForm.getNewEmail()!=null){
+        if (userForm.getNewEmail()!=null&&userForm.getNewEmail().equals("")){
            if (userService.getByEmail(userForm.getNewEmail())==null){
-               userForm.setEMail(userForm.getEMail());
+               userForm.setEmail(userForm.getNewEmail());
            }else{
                throw new ValidationException("A user with this email is already registered");
            }
         }
-        if (userForm.getNewBirthDay()!=null){
-            userForm.setBirthday(userForm.getNewBirthDay());
+        if (userForm.getNewBirthday()!=null){
+            userForm.setBirthday(userForm.getNewBirthday());
         }
         if (userForm.getNewPassword()!=null){
             passwordValidate(userForm.getNewPassword());
             userForm.setPassword(userForm.getNewPassword());
         }
-       userService.add(buildUser(userForm));
+
+        userService.add(buildUser(userForm));
     }
 
     public void delete(long id){

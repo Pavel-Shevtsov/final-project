@@ -26,7 +26,7 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false,unique = true)
-    private String eMail;
+    private String email;
     @Column(nullable = false)
     private String role;
     @Column()
@@ -34,8 +34,8 @@ public class User implements Serializable {
     @Lob
     @Column
     private byte[] image;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<MomentsOfLife> momentsOfLives;
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Post> posts;
 
 }
 
