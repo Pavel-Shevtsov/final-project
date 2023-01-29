@@ -24,8 +24,8 @@ public class UserForm {
     private String email;
     private String newEmail;
     private String role;
-    private LocalDate birthday;
-    private LocalDate newBirthday;
+    private LocalDate dateOfBirth;
+    private LocalDate newDateOfBirth;
     private MultipartFile fileData;
     private byte[] image;
     private List<PostForm> posts = new ArrayList<>();
@@ -36,7 +36,7 @@ public class UserForm {
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.role = user.getRole();
-        this.birthday = user.getBirthday();
+        this.dateOfBirth = user.getDateOfBirth();
         this.image = user.getImage();
 
         if (user.getPosts()!=null) {

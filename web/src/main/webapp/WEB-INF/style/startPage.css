@@ -1,0 +1,23 @@
+body{
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: #eee;
+
+}
+
+button{
+border-radius:4px;
+margin-bottom: 20px;
+height : 48px;
+width:160px;
+background-color: #007bff;
+border: 2px solid #007bff;
+color:#FFFFFF;
+font-size: 16px;
+}
+
+.buttonPage{
+margin-top:175px;
+margin-left:33%;
+
+}

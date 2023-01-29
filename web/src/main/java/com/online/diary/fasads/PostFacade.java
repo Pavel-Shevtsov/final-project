@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -50,9 +51,20 @@ public class PostFacade {
     }
 
 
-    public List <Post> allApproved(){
+    public List <Post> getAllEverythingIsApproved(){
         return postService.getPostApprovedOrNo(false, true);
     }
+    public List <Post> getAllRelatedPostsOfAUser(String username){
+        List <Post> allRelatedPostsOfAUser = new ArrayList<>();
+        List<Post> allEverythingIsApproved = getAllEverythingIsApproved();
+        for (Post post : allEverythingIsApproved){
+            if (post.getUser().getUsername().equalsIgnoreCase(username)){
+                allRelatedPostsOfAUser.add(post);
+            }
+        }
+        return allRelatedPostsOfAUser;
+    }
+
 
     public void update(PostForm postForm){
         if (postForm.getNewTag()!=null||postForm.getNewText()!=null) {

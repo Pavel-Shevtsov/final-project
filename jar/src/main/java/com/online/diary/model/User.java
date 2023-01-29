@@ -30,7 +30,7 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String role;
     @Column()
-    private LocalDate birthday;
+    private LocalDate dateOfBirth;
     @Lob
     @Column
     private byte[] image;

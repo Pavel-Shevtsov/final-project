@@ -32,11 +32,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain formLoginFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                /*.authorizeHttpRequests(authorize->authorize
-                        .requestMatchers("/user/users","/topic/create").hasAnyRole("Admin")
-                        .requestMatchers("/user/**","/topic/**","/post/**","/welcome").authenticated()
+                .authorizeHttpRequests(authorize->authorize
+                        .requestMatchers("/user/users","/post/approved").hasAnyRole("Admin")
+                        .requestMatchers("/welcome","user/update","user/delete","/user/logout","/post/create","post/delete","/post/update").authenticated()
                         .anyRequest().permitAll()
-                )*/
+                )
                 .formLogin()
                 .successForwardUrl("/loginS");
         return http.build();

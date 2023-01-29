@@ -1,6 +1,7 @@
 package com.online.diary.controllers.user;
 
 import com.online.diary.exception.ValidationException;
+import com.online.diary.fasads.PostFacade;
 import com.online.diary.fasads.UserFacade;
 import com.online.diary.forms.UserForm;
 import com.online.diary.model.User;
@@ -22,10 +23,12 @@ public class UserController {
 
     @Autowired
     UserFacade userFacade;
+    @Autowired
+    PostFacade postFacade;
 
     @GetMapping(value = {"/users"})
     public ModelAndView preUsers(HttpServletRequest request){
-        User adminUser = (User) request.getSession().getAttribute("user");
+        UserForm adminUser = (UserForm) request.getSession().getAttribute("user");
         List<User> users = userFacade.users();
         List<User> otherUsers = new ArrayList<>();
         if (users.size()!=1)
@@ -71,15 +74,24 @@ public class UserController {
             UserForm user = (UserForm) request.getSession().getAttribute("user");
             if (user != null) {
                 if (user.getUsername().equalsIgnoreCase(userById.getUsername())) {
-                    modelAndView.addObject("userForm", userById)
+                   return new ModelAndView("userPage")
+                            .addObject("userForm", userById)
                             .addObject("myPosts", userById.getPosts())
                             .addObject("access","full");
                 } else {
-                    modelAndView .addObject("userForm", userById)
-                            .addObject("access","limited");
+                    if (user.getRole().equalsIgnoreCase("admin")){
+                        modelAndView .addObject("userForm", userById)
+                                .addObject("allRelatedPostsOfAUser",postFacade.getAllRelatedPostsOfAUser(userById.getUsername()))
+                                .addObject("access","semi-restricted");
+                    }else{
+                        modelAndView .addObject("userForm", userById)
+                                .addObject("allRelatedPostsOfAUser",postFacade.getAllRelatedPostsOfAUser(userById.getUsername()))
+                                .addObject("access","semi-restricted");
+                    }
                 }
             }else{
                 modelAndView.addObject("userForm",userById)
+                        .addObject("allRelatedPostsOfAUser",postFacade.getAllRelatedPostsOfAUser(userById.getUsername()))
                         .addObject("access","limited");;
             }
         return modelAndView;
@@ -88,5 +100,29 @@ public class UserController {
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
         response.sendRedirect(request.getContextPath());
+    }
+    @PostMapping(value = {"/search"})
+    public ModelAndView Search(@ModelAttribute("searchParameter") String searchParameter) {
+        ModelAndView modelAndView = new ModelAndView("users");
+        List<User> foundUsers = new ArrayList<>();
+        List<User> users = userFacade.users();
+        for (User user : users) {
+            if (!user.getRole().equalsIgnoreCase("admin")) {
+                if (user.getUsername().equalsIgnoreCase(searchParameter)) {
+                    foundUsers.add(user);
+                } else {
+                    if (user.getEmail().equalsIgnoreCase(searchParameter)) {
+                        foundUsers.add(user);
+                    }
+                }
+
+            }
+        }
+        if (foundUsers.size()!=0){
+            modelAndView.addObject("otherUsers",foundUsers);
+        }else {
+            modelAndView.addObject("notFound", "no matching results");
+        }
+    return modelAndView;
     }
 }

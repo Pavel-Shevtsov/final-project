@@ -1,5 +1,6 @@
 package com.online.diary.controllers;
 
+import com.online.diary.email.EmailService;
 import com.online.diary.exception.ValidationException;
 import com.online.diary.fasads.UserFacade;
 import com.online.diary.forms.UserForm;
@@ -21,6 +22,9 @@ public class RegistrationController {
     @Autowired
     UserFacade userFacade;
 
+    @Autowired
+    EmailService emailService;
+
     @GetMapping
     public ModelAndView preRegistration(){
         return new ModelAndView("registration")
@@ -34,10 +38,11 @@ public class RegistrationController {
         if (userRegistrationForm.getConfirmPassword().equals(userRegistrationForm.getPassword())) {
             try {
                 userFacade.addUser(userRegistrationForm);
+                emailService.sendEmail("pahaschewzow@gmail.com",userRegistrationForm.getEmail(),"Registration", userRegistrationForm.getUsername()+ " Registered on the site");
                 response.sendRedirect(request.getContextPath());
-            } catch (ValidationException e) {
+            } catch (ValidationException message) {
                 return new ModelAndView("registration")
-                        .addObject("errorMessage", e)
+                        .addObject("errorMessage", message)
                         .addObject("userRegistrationForm", new UserForm());
             }
         }else{

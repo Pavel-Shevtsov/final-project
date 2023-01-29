@@ -1,0 +1,41 @@
+body {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: #eee;
+}
+th {
+  font-weight: normal;
+  color: #007bff;
+  padding: 10px 15px;
+}
+td {
+  color: #6495ED;
+  border-top: 1px solid #007bff;
+  padding: 10px 15px;
+}
+tr:hover td {
+  background: #e8edff;
+}
+
+button{
+border-radius:4px;
+background-color: #007bff;
+border: 2px solid #007bff;
+color:#FFFFFF;
+}
+a{
+text-decoration: none;
+color: #6495ED;
+}
+input[type="submit"] {
+border-radius:4px;
+background-color: #007bff;
+border: 2px solid #007bff;
+color:#FFFFFF;
+font-size: 16px;
+}
+input[type="text"] {
+  height : 24px;
+  border:none;
+  border-radius:4px;
+}

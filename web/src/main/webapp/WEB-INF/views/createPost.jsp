@@ -5,6 +5,7 @@
     <head>
     <meta http-equiv = "Context-Type" context = "text/html charset = ISO-8859-1" >
     <style>
+    <%@include file="/WEB-INF/style/readPostPage.css"%>
     </style>
     <title>Add Topic</title>
     </head>
@@ -20,7 +21,7 @@
                             	<h2>Text </h2>
                             	<textarea name = "text" ></textarea>
 
-                            	<input type = "submit", value = "Add">
+                            	<br><input type = "submit", value = "Add"></br>
                       </form>
                       <button onclick = "location.href = '${pageContext.request.contextPath}/welcome' " >Back</button>
 

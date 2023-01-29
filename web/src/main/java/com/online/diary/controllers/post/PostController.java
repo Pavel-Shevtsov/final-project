@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -76,21 +77,34 @@ public class PostController {
         response.sendRedirect(request.getContextPath() +"/welcome");
     }
     @GetMapping(value = {"/read"})
-    public ModelAndView preRead(@ModelAttribute("id") long postId){
+    public ModelAndView preRead(@ModelAttribute("id") long postId, HttpServletRequest request){
+       ModelAndView modelAndView = new ModelAndView("readPost");
         PostForm byId = postFacade.getById(postId);
+        UserForm userForm = (UserForm) request.getSession().getAttribute("user");
         User user = byId.getUser();
-        return  new ModelAndView("readPost")
-                .addObject("postForm", byId)
+        if (userForm==null){
+            modelAndView.addObject("access","limited");
+        }else{
+            modelAndView.addObject("access","preLimited");
+        }
+        modelAndView.addObject("postForm", byId)
                 .addObject("author", user);
+        return modelAndView;
     }
     @GetMapping(value = {"/public"})
     public ModelAndView prePublic(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelAndView = new ModelAndView("listOfApprovedPosts");
-        List<Post> posts = postFacade.allApproved();
-        if (posts.size()==0){
+        List<Post> adminPost = new ArrayList<>();
+        List<Post> posts = postFacade.getAllEverythingIsApproved();
+        for(Post post:posts){
+            if (post.getUser().getRole().equalsIgnoreCase("admin")){
+                adminPost.add(post);
+            }
+        }
+        if (adminPost.size()==0){
             modelAndView.addObject("message","Public posts coming soon");
         }else{
-            modelAndView.addObject("publicPosts",posts);
+            modelAndView.addObject("publicPosts",adminPost);
         }
         return modelAndView;
     }
@@ -110,5 +124,26 @@ public class PostController {
         postFacade.update(postForm);
         response.sendRedirect(request.getContextPath() + "/welcome");
 
+    }
+    @PostMapping(value = {"/search"})
+    public ModelAndView searchPost(@ModelAttribute("searchParameter") String searchParameter){
+        ModelAndView modelAndView = new ModelAndView("welcome");
+        List<Post> foundPost = new ArrayList<>();
+        List<Post> posts = postFacade.getAllPublicPosts();
+        for (Post post:posts){
+            if (post.getTag().equalsIgnoreCase(searchParameter)){
+                foundPost.add(post);
+            }else{
+                if (post.getUser().getUsername().equalsIgnoreCase(searchParameter)){
+                    foundPost.add(post);
+                }
+            }
+        }
+        if (foundPost.size()!=0){
+            modelAndView.addObject("userPost",foundPost);
+        }else{
+            modelAndView.addObject("notFound","no matching results");
+        }
+        return modelAndView;
     }
 }

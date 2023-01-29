@@ -27,10 +27,18 @@ public class WelcomeController {
         int visitCounter = (int) session.getAttribute("visitCounter");
         if (user.getRole().equalsIgnoreCase("Admin")){
             List<Post> notApproved = postFacade.getNotApproved();
-            modelAndView.addObject("notApproved",notApproved);
+            if (notApproved.size()==0){
+                modelAndView.addObject("noPost","No posts to check");
+            }else{
+                modelAndView.addObject("notApproved",notApproved);
+            }
+
         }else{
                 modelAndView .addObject("userPost",postFacade.getAllPublicPosts());
             }
+        if (visitCounter<2) {
+            session.setAttribute("visitCounter", 2);
+        }
         return modelAndView;
     }
 }

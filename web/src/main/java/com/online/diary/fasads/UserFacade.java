@@ -27,7 +27,7 @@ public class UserFacade {
         user.setPassword(userForm.getPassword());
         user.setRole(userForm.getRole());
         user.setEmail(userForm.getEmail());
-        user.setBirthday(userForm.getBirthday());
+        user.setDateOfBirth(userForm.getDateOfBirth());
         user.setImage(userForm.getImage());
         List<Post> posts = new ArrayList<>();
 
@@ -74,8 +74,8 @@ public class UserFacade {
             throw new ValidationException(e);
         }
 
-        if (userService.getByUsername(userForm.getNewUsername())==null){
-            if (userService.getByEmail(userForm.getNewEmail())==null){
+        if (userService.getByUsername(userForm.getUsername())==null){
+            if (userService.getByEmail(userForm.getEmail())==null){
                 userForm.setRole("User");
                 User user = buildUser(userForm);
                 userService.add(user);
@@ -110,8 +110,8 @@ public class UserFacade {
                 }
             }
         }
-        if (userForm.getNewBirthday()!=null){
-            userForm.setBirthday(userForm.getNewBirthday());
+        if (userForm.getNewDateOfBirth()!=null){
+            userForm.setDateOfBirth(userForm.getNewDateOfBirth());
         }
         if (userForm.getNewPassword()!=null){
             if (!userForm.getNewPassword().equals("")) {
