@@ -22,6 +22,8 @@ public class Post implements Serializable {
     @DateTimeFormat
     @Column(nullable = false)
     private LocalDate publicationDate;
+    @Column()
+    private LocalDate lastUpdateDate;
     @Column(unique = true,nullable = false)
     private String text;
     @Column

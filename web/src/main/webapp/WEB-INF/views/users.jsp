@@ -14,11 +14,6 @@
 
     </head>
             <body>
-
-
-                <div class= "message">
-                    ${updateUserPassword}
-                </div>
                         <table>
 
                                     <tbody>

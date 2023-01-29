@@ -21,19 +21,16 @@ public class WelcomeController {
     PostFacade postFacade;
     @GetMapping
     public ModelAndView preWelcome(HttpServletRequest request){
-        ModelAndView modelAndView;
+        ModelAndView modelAndView = new ModelAndView("welcome");
         HttpSession session = request.getSession();
         UserForm user = (UserForm) session.getAttribute("user");
         int visitCounter = (int) session.getAttribute("visitCounter");
         if (user.getRole().equalsIgnoreCase("Admin")){
-            List<Post> notApproved = postFacade.getNotApproved(false, null);
-            modelAndView = new ModelAndView("welcome")
-                    .addObject("notApproved",notApproved);
+            List<Post> notApproved = postFacade.getNotApproved();
+            modelAndView.addObject("notApproved",notApproved);
         }else{
-                modelAndView = new ModelAndView("welcome")
-                        .addObject("userMomentOfLife",user.getPosts());
+                modelAndView .addObject("userPost",postFacade.getAllPublicPosts());
             }
-
         return modelAndView;
     }
 }

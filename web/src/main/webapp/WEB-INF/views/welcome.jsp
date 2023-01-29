@@ -19,12 +19,12 @@
                 <table>
                     <security:authorize access = "hasRole('ROLE_Admin')">
                         <thead>
-                            <th >Not approved</th>
+                            <th >For approval</th>
                         </thead>
                             <tbody>
                                 <c:forEach var="notApproved" items="${notApproved}">
                                     <tr>
-                                        <td><c:out value ="${notApproved.tag}"/> <a class="action" href ="${pageContext.request.contextPath}/topic/delete?id=${notApproved.id}">Go to</a></td>
+                                        <td><c:out value ="${notApproved.tag}"/><td><a class="action" href ="${pageContext.request.contextPath}/post/read?id=${notApproved.id}">Read</a></td></td>
                                     </tr>
                             </tbody>
                                 </c:forEach>
@@ -34,23 +34,26 @@
 
                                           <thead>
                                               <th> Tag </th>
-                                              <th> Text </th>
+                                              <th> Date </th>
+                                              <th> Last update date</th>
                                               <th> Action </th>
                                           </thead>
                                               <tbody>
-                                                  <c:forEach var="userMomentOfLife" items="${userMomentOfLife}">
+                                                  <c:forEach var="userPost" items="${userPost}">
                                                       <tr>
-                                                          <td>#<c:out value =" ${userMomentOfLife.tag} "/></td>
-                                                          <td><c:out value =" ${userMomentOfLife.text} "/></td>
-                                                          <td><p><a class="action" href ="${pageContext.request.contextPath}/post/delete?id=${userMomentOfLife.id}">Delete </a>
-                                                          <a class="action" href ="${pageContext.request.contextPath}/post/posts?id=${userMomentOfLife.id}"> Go to </a></p></td>
+                                                          <td>#<c:out value =" ${userPost.tag} "/></td>
+                                                          <td><c:out value =" ${userPost.publicationDate} "/></td>
+                                                          <td><c:out value =" ${userPost.lastUpdateDate} "/></td>
+                                                          <td><a class="action" href ="${pageContext.request.contextPath}/post/read?id=${userPost.id}">Read</a></td>
                                                       </tr>
                                               </tbody>
                                                   </c:forEach>
 
                                 </security:authorize>
                 </table>
+                <a class="action" href ="${pageContext.request.contextPath}/user/page?id=${user.id}"> My page </a></p>
                  <a class="action" href ="${pageContext.request.contextPath}/user/update?id=${user.id}"> Update </a></p>
+                  <a class="action" href ="${pageContext.request.contextPath}/post/create?id=${user.id}"> Create post </a></p>
 
             </body>
     </html>

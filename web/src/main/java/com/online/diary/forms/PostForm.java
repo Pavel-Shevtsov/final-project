@@ -12,7 +12,9 @@ import java.time.LocalDate;
 public class PostForm {
     private Long id;
     private String tag;
+    private String newTag;
     private LocalDate publicationDate;
+    private LocalDate lastUpdateDate;
     private String text;
     private String newText;
     private Boolean isPrivate;
@@ -23,6 +25,7 @@ public class PostForm {
         this.id = post.getId();
         this.tag = post.getTag();
         this.publicationDate = post.getPublicationDate();
+        this.lastUpdateDate = post.getLastUpdateDate();
         this.text = post.getText();
         this.isPrivate = post.getIsPrivate();
         this.isApprovedForPublication = post.getIsApprovedForPublication();

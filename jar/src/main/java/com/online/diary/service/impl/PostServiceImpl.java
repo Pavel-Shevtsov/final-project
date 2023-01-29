@@ -15,7 +15,8 @@ public class PostServiceImpl extends BaseServiceImpl<Post,Long> implements PostS
     PostJpaRepository postJpaRepository;
 
     @Override
-    public List<Post> getNotApprovedMoments(Boolean isPrivate, Boolean isApprovedForPublication) {
+    public List<Post> getPostApprovedOrNo(Boolean isPrivate, Boolean isApprovedForPublication) {
         return postJpaRepository.findByIsPrivateAndIsApprovedForPublication(isPrivate,isApprovedForPublication);
     }
+
 }

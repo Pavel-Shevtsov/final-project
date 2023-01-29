@@ -17,14 +17,14 @@
                                             <td><input type = "hidden" name= "role" value="${userUpdateForm.role}"/></td>
 
                                             <p>New Name
-                                            <input type="text" name = "newUsername" placeholder="${userUpdateForm.username}" ></p>
+                                            <input type="text" name ="newUsername"placeholder="${userUpdateForm.username}"></p>
                                             <p>New Password
-                                            <input type="password" name = "newPassword" ></p>
+                                            <input type="password" name ="newPassword"></p>
                                             <p> New Email
-                                            <input type="email" name = "newEmail" placeholder="${userUpdateForm.email}" ></p>
+                                            <input type="email" name = "newEmail" placeholder="${userUpdateForm.email}"></p>
                                             <p>New BirthDay
                                             <input type="date" id="start" name="newBirthday"
-                                             min="1940-01-01" max="2010-31-12" placeholder="${userUpdateForm.birthday}" ></p>
+                                             min="1940-01-01" max="2010-31-12" placeholder="${userUpdateForm.birthday}"></p>
                                         <input type = "submit", value = "Update">
                                     </form>
                             <button onclick = "location.href = '${pageContext.request.contextPath}/welcome' ">Back </button>

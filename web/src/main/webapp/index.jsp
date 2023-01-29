@@ -13,5 +13,6 @@
     <body>
         <button onclick = "location.href='${pageContext.request.contextPath}/login'">Login </button>
     	<button onclick = "location.href='${pageContext.request.contextPath}/registration'">Registration </button>
+    	<td> <a class="action" href = "${pageContext.request.contextPath}/post/public">Read</td>
     </body>
     </html>

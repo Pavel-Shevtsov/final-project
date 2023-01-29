@@ -37,15 +37,10 @@ public class UserController {
         return new ModelAndView("users")
                 .addObject("otherUsers", otherUsers);
     }
-    @GetMapping(value = {"/update"})
-    public ModelAndView preUpdate(@RequestParam("id")long id, HttpServletRequest request,HttpServletResponse response){
-        UserForm byId = userFacade.getById(id);
-        return new ModelAndView("update")
-                .addObject("userUpdateForm",byId);
-    }
+
     @SneakyThrows
     @PostMapping(value = {"/update"})
-    public ModelAndView postUpdate(@ModelAttribute("userUpdateForm") UserForm updatedUser,HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView postUpdate(@ModelAttribute("userForm") UserForm updatedUser,HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = null;
         try {
             userFacade.update(updatedUser);
@@ -67,5 +62,31 @@ public class UserController {
         }else {
             response.sendRedirect(request.getContextPath());
         }
+    }
+
+    @GetMapping(value = {"/page"})
+    public ModelAndView prePage(@ModelAttribute("id") long userId,HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("userPage");
+        UserForm userById = userFacade.getById(userId);
+            UserForm user = (UserForm) request.getSession().getAttribute("user");
+            if (user != null) {
+                if (user.getUsername().equalsIgnoreCase(userById.getUsername())) {
+                    modelAndView.addObject("userForm", userById)
+                            .addObject("myPosts", userById.getPosts())
+                            .addObject("access","full");
+                } else {
+                    modelAndView .addObject("userForm", userById)
+                            .addObject("access","limited");
+                }
+            }else{
+                modelAndView.addObject("userForm",userById)
+                        .addObject("access","limited");;
+            }
+        return modelAndView;
+    }
+    @GetMapping(value = {"/logout"})
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+        response.sendRedirect(request.getContextPath());
     }
 }

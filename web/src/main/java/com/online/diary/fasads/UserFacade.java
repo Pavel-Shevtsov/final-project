@@ -38,6 +38,7 @@ public class UserFacade {
                 post.setTag(postForm.getTag());
                 post.setText(postForm.getText());
                 post.setPublicationDate(postForm.getPublicationDate());
+                post.setLastUpdateDate(postForm.getLastUpdateDate());
                 post.setIsApprovedForPublication(postForm.getIsApprovedForPublication());
                 post.setIsPrivate(postForm.getIsPrivate());
                 posts.add(post);
@@ -92,28 +93,34 @@ public class UserFacade {
 
     public void update(UserForm userForm) throws ValidationException {
         if (userForm.getNewUsername()!=null&&!userForm.getNewUsername().equals("")){
-            if (userService.getByUsername(userForm.getNewUsername())==null){
-                userForm.setUsername(userForm.getNewUsername());
-            }else{
-                throw new ValidationException("A user with this name is already registered");
+            if (!userForm.getNewUsername().equalsIgnoreCase(userForm.getUsername())) {
+                if (userService.getByUsername(userForm.getNewUsername()) == null) {
+                    userForm.setUsername(userForm.getNewUsername());
+                } else {
+                    throw new ValidationException("A user with this name is already registered");
+                }
             }
         }
-        if (userForm.getNewEmail()!=null&&userForm.getNewEmail().equals("")){
-           if (userService.getByEmail(userForm.getNewEmail())==null){
-               userForm.setEmail(userForm.getNewEmail());
-           }else{
-               throw new ValidationException("A user with this email is already registered");
-           }
+        if (userForm.getNewEmail()!=null&&!userForm.getNewEmail().equals("")){
+            if (!userForm.getNewEmail().equalsIgnoreCase(userForm.getEmail())){
+                if (userService.getByEmail(userForm.getNewEmail()) == null) {
+                    userForm.setEmail(userForm.getNewEmail());
+                } else {
+                    throw new ValidationException("A user with this email is already registered");
+                }
+            }
         }
         if (userForm.getNewBirthday()!=null){
             userForm.setBirthday(userForm.getNewBirthday());
         }
         if (userForm.getNewPassword()!=null){
-            passwordValidate(userForm.getNewPassword());
-            userForm.setPassword(userForm.getNewPassword());
+            if (!userForm.getNewPassword().equals("")) {
+                passwordValidate(userForm.getNewPassword());
+                userForm.setPassword(userForm.getNewPassword());
+            }
         }
 
-        userService.add(buildUser(userForm));
+        userService.modify(buildUser(userForm));
     }
 
     public void delete(long id){

@@ -45,6 +45,7 @@ public class UserForm {
                 postForm.setId(post.getId());
                 postForm.setTag(post.getTag());
                 postForm.setPublicationDate(post.getPublicationDate());
+                postForm.setLastUpdateDate(post.getLastUpdateDate());
                 postForm.setText(post.getText());
                 postForm.setIsPrivate(post.getIsPrivate());
                 postForm.setIsApprovedForPublication(post.getIsApprovedForPublication());

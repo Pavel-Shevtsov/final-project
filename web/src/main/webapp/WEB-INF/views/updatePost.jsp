@@ -5,49 +5,33 @@
     <head>
     <meta http-equiv = "Context-Type" context = "text/html charset = ISO-8859-1" >
     <style>
-        <%@include file="/WEB-INF/style/styleBody.css"%>
-        <%@include file="/WEB-INF/style/stylePanel.css"%>
-        <%@include file="/WEB-INF/style/styleDropDownUser.css"%>
-        <%@include file="/WEB-INF/style/postPage.css"%>
-        <%@include file="/WEB-INF/style/photoViews.css"%>
+
     </style>
     <title>Add Topic</title>
     </head>
             <body>
-            <div class= "message">
-            ${updatePost}
-            </div>
-                    <div class="panel">
-                        <a class="nameApplication" href = '${pageContext.request.contextPath}/welcome'>T&P</a>
-                          <div class="dropDownUser">
-                              <button class="dropBtn"> <img src="${pageContext.request.contextPath}/user/imageOnPage"  class = "photoViews"/> ${userName}</button>
-                                  <div class="dropDownUser-content" style="right:20;">
-                                      <p><a href = '${pageContext.request.contextPath}/welcome'>Welcome</a></p>
-                                      <p><a href = '${pageContext.request.contextPath}/user/update?id=${userId}'>Update</a></p>
-                                      <c:if test="${role.equals('Admin')}">
-                                      <p><a href ='${pageContext.request.contextPath}/user/users'>All Users</a></p>
-                                      <p><a href ='${pageContext.request.contextPath}/topic/create'>Create Topic</a></p>
-                                      </c:if>
-                                      <c:if test="${role.equals('User')}">
-                                      <p><a href ='${pageContext.request.contextPath}/topic/allFree'>Add Topic</a></p>
-                                      </c:if>
-                                      <p><a href = '${pageContext.request.contextPath}/user/logout' >Logout</a></p>
-                                  </div>
-                          </div>
-                    </div>
+
 
                      <form action="${pageContext.request.contextPath}/post/update" method = "post" >
-                        <div class="addPostPage">
-                            <h1>Update post </h1>
-                            	<h3> New name post </h2>
-                            	    <input type="text" class ="namePost" name="newName" value = "${postForm.name}" >
-                            	<h3>New text </h2>
+                     <td><input type = "hidden" name= "id" value="${postForm.id}"/></td>
+                     <td><input type = "hidden" name= "tag" value="${postForm.tag}"/></td>
+                     <td><input type = "hidden" name= "text" value="${postForm.text}"/></td>
+                     <td><input type = "hidden" name= "publicationDate" value="${postForm.publicationDate}"/></td>
+                     <td><input type = "hidden" name= "lastUpdateDate" value="${postForm.lastUpdateDate}"/></td>
+                     <td><input type = "hidden" name= "isApprovedForPublication" value="${postForm.isApprovedForPublication}"/></td>
 
-                            	    <textarea name = "newText" >${postForm.text} </textarea>
-                            	<input type = "submit", value = "Update">
-                        </div>
+
+                            	<h2> New Tag </h2>
+                            	    <input type="text"  name="newTag" value =${postForm.tag}>
+                            	<h2>New text </h2>
+
+                            	<textarea name = "newText" >${postForm.text}</textarea>
+                            	<h2> Make this post available only to you </h2>
+                                <p><input name="isPrivate" type="radio" value="true">Yes</p>
+                                <p><input name="isPrivate" type="radio" value="false">No</p>
+                                <input type = "submit", value = "Update">
                      </form>
-
+                                <button onclick = "location.href = '${pageContext.request.contextPath}/welcome' " >Back</button>
 
 
             </body>
