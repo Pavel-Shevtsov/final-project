@@ -10,11 +10,12 @@
     <title>All Users</title>
     </head>
             <body>
+             <button onclick = "location.href='${pageContext.request.contextPath}/welcome'">Back</button>
             <form action="${pageContext.request.contextPath}/user/search" method = "post" >
             <br><input type="text" name = "searchParameter" required = "required" placeholder="Search"> <input type = "submit", value = "Search"></br>
             </form>
              <h3>${notFound}<h3>
-                  <table>
+                  <table align = "center">
                           <tbody>
                             <c:forEach var="user" items="${otherUsers}">
                                 <tr>
@@ -28,6 +29,6 @@
                             </c:forEach>
                           </tbody>
                   </table>
-                         <button onclick = "location.href='${pageContext.request.contextPath}/welcome'">Back</button></br>
+
             </body>
     </html>

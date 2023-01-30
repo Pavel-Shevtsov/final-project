@@ -18,6 +18,9 @@ tr:hover td {
 }
 
 button{
+width:52px;
+height : 24px;
+font-size: 16px;
 border-radius:4px;
 background-color: #007bff;
 border: 2px solid #007bff;

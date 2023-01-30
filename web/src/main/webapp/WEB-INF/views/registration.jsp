@@ -8,23 +8,23 @@
      <%@include file="/WEB-INF/style/registrationStyle.css"%>
      </style>
     <title>Account registration</title>
-    </head>
+    </head><br><button onclick = "location.href = '${pageContext.request.contextPath}' " >Back</button></br>
             <body
                                             <h3>${errorMessage}<h3>
 
                                    <form action="${pageContext.request.contextPath}/registration" method = "post" >
                                    <div class = "registrationPage">
-                                    <h3> Registration </h3>
+                                    <h3>Please sing up </h3>
                                                  <br><input type="text" name = "username" required = "required" placeholder="Username"></br>
                                                  <br><input type="password" name = "password" required = "required" placeholder="Password"></br>
                                                  <br><input type="password" name = "confirmPassword" required = "required"  placeholder="Confirm Password"></br>
                                                  <br><input type="date" id="start" name="dateOfBirth"
                                                      value="2010-01-01"   min="1940-01-01" max="2010-01-01" placeholder="eMail"> </br>
                                                 </br> <input type="email" name = "email" required = "required" placeholder="eMail"></br>
-                                                  <br><input type = "submit", value = "Registration">
+                                                  <br><input type = "submit", value = "Sing up"></br>
                                         </form>
 
-                            <button onclick = "location.href = '${pageContext.request.contextPath}' " >Back</button></br>
+
                    </div>          </div>
             </body>
     </html>

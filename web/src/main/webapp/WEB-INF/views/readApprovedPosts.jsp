@@ -5,16 +5,18 @@
     <head>
     <meta http-equiv = "Context-Type" context = "text/html charset = ISO-8859-1" >
     <style>
-    <%@include file="/WEB-INF/style/readPostPage.css"%>
+    <%@include file="/WEB-INF/style/readApprovedPostPage.css"%>
     </style>
     <title>Read Post</title>
     </head>
             <body>
+            <button onclick = "location.href = '${pageContext.request.contextPath}/post/public'">Back</button>
+            <div class ="readApprovedPostPage">
                 <h2>Tag </h2>
                     <input type="text" value = ${postForm.tag} readonly >
                 <h2>Text</h2>
                     <textarea name = "text" readonly> ${postForm.text}</textarea>
-                <h2> Author : <a class="action" href = "${pageContext.request.contextPath}/user/page?id=${author.id}">${author.username}</a></h2>
-                    <button onclick = "location.href = '${pageContext.request.contextPath}/post/public'">Back</button>
+                <h3> Author : <a class="action" href = "${pageContext.request.contextPath}/user/page?id=${author.id}">${author.username}</a></h3>
+            </div>
             </body>
     </html>

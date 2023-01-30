@@ -13,7 +13,7 @@
     <body>
     <div class = "buttonPage">
         <br><button onclick = "location.href='${pageContext.request.contextPath}/login'">Login </button>
-    	<button onclick = "location.href='${pageContext.request.contextPath}/registration'">Registration</button>
+    	<button onclick = "location.href='${pageContext.request.contextPath}/registration'">Sing up</button>
     	<button onclick = "location.href='${pageContext.request.contextPath}/post/public'">Learn about the site</button></br>
     </div>
     </body>

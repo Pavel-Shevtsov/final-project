@@ -17,11 +17,27 @@ height: 200px;
 border:none;
 border-radius:4px;
 }
+h3{
+margin-left:10%;
+margin-bottom:4px;
+}
 h2{
 margin-left:23.5%;
 margin-bottom:4px;
 }
+h1{
+margin-left:16.5%;
+margin-bottom:4px;
+}
+p{
+margin-left:20.5%;
+margin-bottom:4px;
+}
 input[type="submit"] {
+margin-left:21.5%;
+width: 100px;
+height: 24px;
+margin-top:8px;
 border-radius:4px;
 background-color: #007bff;
 border: 2px solid #007bff;
@@ -40,6 +56,6 @@ text-decoration: none;
 color: #6495ED;
 }
 
-.readPostPage{
+.creatPostPage{
 margin-left:33.5%;
 }

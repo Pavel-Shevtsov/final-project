@@ -9,6 +9,17 @@
     <title>User Page</title>
     </head>
             <body>
+                <c:if test="${access.equals('full')}">
+                    <button onclick = "location.href='${pageContext.request.contextPath}/welcome'">Back</button>
+                    <button onclick = "location.href='${pageContext.request.contextPath}/user/logout'">Logout </button>
+                </c:if>
+                        <c:if test="${access.equals('semi-restricted')}">
+                            <button onclick = "location.href='${pageContext.request.contextPath}/welcome'">Back</button>
+                        </c:if>
+                                <c:if test="${access.equals('limited')}">
+                                    <button onclick = "location.href='${pageContext.request.contextPath}/post/public'">Back</button>
+                                </c:if>
+
                                     <form action="${pageContext.request.contextPath}/user/update" method = "post" >
                                         <div class = "page">
                                             <td><input type = "hidden" name= "id" value="${userForm.id}"/></td>
@@ -54,8 +65,6 @@
                                                     <a class="action" href ="${pageContext.request.contextPath}/post/read?id=${myPosts.id}">Read</a></td></tr>
                                             </c:forEach>
                                     </table>
-                                     <td><button onclick = "location.href='${pageContext.request.contextPath}/welcome'">Back</button></td>
-                                     <td><button onclick = "location.href='${pageContext.request.contextPath}/user/logout'">Logout </button></td>
                                         </c:if>
 
                                         <c:if test="${access.equals('semi-restricted')}">
@@ -71,7 +80,6 @@
                                                          <td><a class="action" href ="${pageContext.request.contextPath}/post/read?id=${allRelatedPostsOfAUser.id}">Read</a></td></tr>
                                                  </c:forEach>
                                          </table>
-                                           <a class="action" href ="${pageContext.request.contextPath}/welcome">Back</a>
                                         </c:if>
 
                                             <c:if test="${access.equals('limited')}">
@@ -89,7 +97,6 @@
                                                             <td><a class="action" href ="${pageContext.request.contextPath}/post/read?id=${allRelatedPostsOfAUser.id}">Read</a></td></tr>
                                                     </c:forEach>
                                             </table>
-                                             <td> <button onclick = "location.href='${pageContext.request.contextPath}/post/public'">Back</button></td>
                                             </c:if>
             </body>
     </html>
