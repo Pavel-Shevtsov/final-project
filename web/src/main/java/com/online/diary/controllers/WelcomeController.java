@@ -2,8 +2,7 @@ package com.online.diary.controllers;
 
 import com.online.diary.fasads.PostFacade;
 import com.online.diary.forms.UserForm;
-import com.online.diary.model.Post;
-import com.online.diary.model.User;
+import com.online.diary.entity.Post;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

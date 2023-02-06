@@ -1,5 +1,6 @@
 body {
   background-color: #eee;
+  margin-bottom:70px;
 }
 input[type="text"] {
   height : 42px;

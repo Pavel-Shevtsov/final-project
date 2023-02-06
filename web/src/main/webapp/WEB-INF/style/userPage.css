@@ -1,5 +1,7 @@
 body {
+padding-top: 10px;
   background-color: #eee;
+  margin-bottom:70px;
 }
 th {
   font-weight: normal;
@@ -27,6 +29,7 @@ text-decoration: none;
 color: #6495ED;
 }
 input[type="submit"] {
+margin-left:7%;
 border-radius:4px;
 background-color: #007bff;
 border: 2px solid #007bff;

@@ -1,7 +1,7 @@
 package com.online.diary.fasads;
 
 import com.online.diary.forms.PostForm;
-import com.online.diary.model.Post;
+import com.online.diary.entity.Post;
 import com.online.diary.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

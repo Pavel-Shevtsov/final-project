@@ -4,7 +4,7 @@ import com.online.diary.exception.ValidationException;
 import com.online.diary.fasads.PostFacade;
 import com.online.diary.fasads.UserFacade;
 import com.online.diary.forms.UserForm;
-import com.online.diary.model.User;
+import com.online.diary.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
@@ -45,13 +45,18 @@ public class UserController {
     @PostMapping(value = {"/update"})
     public ModelAndView postUpdate(@ModelAttribute("userForm") UserForm updatedUser,HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = null;
+        UserForm byId = userFacade.getById(updatedUser.getId());
         try {
             userFacade.update(updatedUser);
             response.sendRedirect(request.getContextPath());
         } catch (ValidationException message) {
-             modelAndView = new ModelAndView("update")
+             modelAndView = new ModelAndView("userPage")
                     .addObject("errorMessage",message)
-                    .addObject("userUpdateForm",updatedUser);
+                     .addObject("access","full")
+                     .addObject("myPosts", byId.getPosts())
+                    .addObject("userForm",updatedUser);
+
+
         }
       return modelAndView;
     }

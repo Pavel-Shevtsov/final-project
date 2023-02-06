@@ -10,9 +10,6 @@
     <title>Read Post</title>
     </head>
             <body>
-                <c:if test="${access.equals('limited')}">
-                    <button onclick = "location.href = '${pageContext.request.contextPath}/post/public' " >Back</button>
-                </c:if>
                         <c:if test="${access.equals('preLimited')}">
                             <button onclick = "location.href = '${pageContext.request.contextPath}/welcome' " >Back</button>
                         </c:if>
@@ -28,8 +25,8 @@
                                   <textarea   name = "text" readonly> ${postForm.text}</textarea>
                               <h3>Author: <a class="action" href = "${pageContext.request.contextPath}/user/page?id=${author.id}">${author.username}</a></h3>
                                     <security:authorize access = "hasRole('ROLE_Admin')">
-                                          <p><input name="isApprovedForPublication" type="radio" value="true">Yes</p>
-                                          <p><input name="isApprovedForPublication" type="radio" value="false">No</p>
+                                          <p><input name="isApprovedForPublication" type="radio" value="true">Yes
+                                          <input name="isApprovedForPublication" type="radio" value="false">No</p>
                                               <input type = "submit" value = Approved>
                                     </security:authorize>
                     </form>

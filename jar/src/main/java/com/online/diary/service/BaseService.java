@@ -2,7 +2,7 @@ package com.online.diary.service;
 
 import java.util.List;
 
-public interface IService<T,ID>{
+public interface BaseService<T,ID>{
     void add(T t) ;
 
     void delete(ID id);

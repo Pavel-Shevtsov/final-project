@@ -7,7 +7,7 @@
     <style>
     <%@include file="/WEB-INF/style/readApprovedPostPage.css"%>
     </style>
-    <title>Read Post</title>
+    <title>News post</title>
     </head>
             <body>
             <button onclick = "location.href = '${pageContext.request.contextPath}/post/public'">Back</button>

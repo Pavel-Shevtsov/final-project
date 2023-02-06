@@ -18,10 +18,7 @@
                             <security:authorize access = "hasRole('ROLE_Admin')">
                                     <th>For approval</th>
                                     <th>Action</th>
-                                    <tr>
-                                        <td>${noPost}</td>
-                                        <td>${noPost}</td>
-                                    </tr>
+
                                         <c:forEach var="notApproved" items="${notApproved}">
                                             <tr>
                                                 <td><c:out value ="${notApproved.tag}"/></td>

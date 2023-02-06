@@ -1,6 +1,6 @@
 package com.online.diary.repository;
 
-import com.online.diary.model.User;
+import com.online.diary.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

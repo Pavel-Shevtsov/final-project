@@ -1,6 +1,6 @@
 package com.online.diary.repository;
 
-import com.online.diary.model.Post;
+import com.online.diary.entity.Post;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,5 +1,5 @@
 package com.online.diary.service.impl;
-import com.online.diary.model.User;
+import com.online.diary.entity.User;
 import com.online.diary.repository.UserJpaRepository;
 import com.online.diary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,6 @@ public class UserServiceImpl extends BaseServiceImpl<User,Long> implements UserS
     public User getByUsername(String userName) {
        return userJpaRepositoryService.findByUsername(userName).orElse(null);
     }
-
-
 
     @Override
     public User getByEmail(String email) {

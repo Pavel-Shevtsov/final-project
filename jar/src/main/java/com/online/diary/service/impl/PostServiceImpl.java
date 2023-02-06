@@ -1,6 +1,6 @@
 package com.online.diary.service.impl;
 
-import com.online.diary.model.Post;
+import com.online.diary.entity.Post;
 import com.online.diary.repository.PostJpaRepository;
 import com.online.diary.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;

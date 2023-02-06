@@ -1,15 +1,14 @@
 package com.online.diary.service.impl;
 
 import com.online.diary.repository.BaseRepository;
-import com.online.diary.service.IService;
+import com.online.diary.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @NoRepositoryBean
-public class BaseServiceImpl <T,ID> implements IService<T,ID> {
+public class BaseServiceImpl <T,ID> implements BaseService<T,ID> {
 
     @Autowired
     private BaseRepository<T,ID> baseRepository;

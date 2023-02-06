@@ -1,4 +1,6 @@
 com\online\diary\controllers\WelcomeController.class
+com\online\diary\email\EmailService.class
+com\online\diary\email\EmailServiceImpl.class
 com\online\diary\ServletInitializer.class
 com\online\diary\SecurityConfiguration.class
 com\online\diary\authentication\MyDBAuthenticationService.class
@@ -8,5 +10,6 @@ com\online\diary\controllers\user\UserController.class
 com\online\diary\forms\PostForm.class
 com\online\diary\controllers\LoginController.class
 com\online\diary\forms\UserForm.class
+com\online\diary\controllers\post\PostController.class
 com\online\diary\fasads\UserFacade.class
 com\online\diary\SpringBootRun.class

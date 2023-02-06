@@ -1,4 +1,4 @@
-package com.online.diary.model;
+package com.online.diary.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,14 +17,14 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true,nullable = false,length = 30)
+    @Column(nullable = false,length = 30)
     private String tag;
     @DateTimeFormat
     @Column(nullable = false)
     private LocalDate publicationDate;
     @Column()
     private LocalDate lastUpdateDate;
-    @Column(unique = true,nullable = false)
+    @Column(nullable = false)
     private String text;
     @Column
     private Boolean isPrivate;

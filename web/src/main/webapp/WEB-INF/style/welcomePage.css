@@ -1,9 +1,10 @@
 body {
   padding-top: 10px;
-  padding-bottom: 20px;
+  margin-bottom:70px;
   background-color: #eee;
 }
 th {
+
   font-weight: normal;
   color: #007bff;
   padding: 10px 15px;

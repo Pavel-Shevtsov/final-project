@@ -1,13 +1,13 @@
-D:\Git-final-project\jar\src\main\java\com\online\diary\model\User.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\UserService.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\impl\PostServiceImpl.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\validation\UserPasswordValidation.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\impl\UserServiceImpl.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\repository\UserJpaRepository.java
+D:\Git-final-project\jar\src\main\java\com\online\diary\entitys\User.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\repository\PostJpaRepository.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\impl\BaseServiceImpl.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\PostService.java
-D:\Git-final-project\jar\src\main\java\com\online\diary\model\Post.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\service\IService.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\repository\BaseRepository.java
+D:\Git-final-project\jar\src\main\java\com\online\diary\entitys\Post.java
 D:\Git-final-project\jar\src\main\java\com\online\diary\exception\ValidationException.java

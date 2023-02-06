@@ -1,7 +1,7 @@
 package com.online.diary.forms;
 
-import com.online.diary.model.Post;
-import com.online.diary.model.User;
+import com.online.diary.entity.Post;
+import com.online.diary.entity.User;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
